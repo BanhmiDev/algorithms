@@ -1,3 +1,40 @@
 algorithms
 ==========
-Implementations of various algorithms and data structures for educational purposes.
+
+## Java
+- Binary search tree
+- Maths
+    - Binomial distribution
+    - Vector
+    - Factorial
+    - Custom maths library
+- Sorting
+    - Bubble sort
+    - Selection sort
+
+## Python
+- Algorithms
+    - Eight queens puzzle
+    - Eratosthenes sieve
+    - Sorting
+        - Bubble sort
+        - Heap sort
+        - Insertion sort
+        - Merge sort
+        - Quick sort
+        - Selection sort
+    - Maths
+        - Factorial
+- Data structures
+    - Binary search tree
+    - Queue
+    - Stack
+
+## Haskell
+- Misc
+    - Factorial
+- Sorting
+    - Bubble sort
+    - Insertion sort
+    - Quick sort
+    - Selection sort
