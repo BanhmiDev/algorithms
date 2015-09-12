@@ -6,6 +6,8 @@ algorithms
 - Maths
     - Binomial distribution
     - Vector
+    - Polynomial
+    - Line2D
     - Factorial
     - Custom maths library
 - Sorting
