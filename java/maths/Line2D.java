@@ -1,42 +1,47 @@
 /**
  * Line2D class.
- * TODO: Advance to Point class (?)
  */
 public class Line2D {
 
-    private double x1;
-    private double y1;
-    private double x2;
-    private double y2;
+    private Point2D point1;
+    private Point2D point2;
     
-    public Line2D (double x1, double y1, double x2, double y2) {
-        this.x1 = x1;
-        this.y1 = y1;
-        this.x2 = x2;
-        this.y2 = y2;
+    public Line2D(double x1, double y1, double x2, double y2) {
+        this(new Point2D(x1, y1), new Point2D(x2, y2));
+    }
+
+    public Line2D(Point2D point1, Point2D point2) {
+        this.point1 = point1;
+        this.point2 = point2;
+    }
+
+    public void setPoint1(Point2D point) {
+        this.point1 = point;
     }
 
     public void setPoint1(double x, double y) {
-        this.x1 = x;
-        this.y1 = y;
+        this.point1 = new Point2D(x, y);
+    }
+
+    public void setPoint2(Point2D point) {
+        this.point2 = point;
     }
 
     public void setPoint2(double x, double y) {
-        this.x2 = x;
-        this.y2 = y;
+        this.point2 = new Point2D(x, y);
     }
 
-    public double getX1() { return this.x1; }
-    public double getY1() { return this.y1; }
-    public double getX2() { return this.x2; }
-    public double getY2() { return this.y2; }
+    public double getX1() { return this.point1.getX(); }
+    public double getY1() { return this.point1.getY(); }
+    public double getX2() { return this.point2.getX(); }
+    public double getY2() { return this.point2.getY(); }
     
     /**
     * Calculate the slope of this line.
     * @return double Returns the slope value.
     */
     public double getSlope() {
-        return (y2-y1)/(x2-x1);
+        return (point2.getY() - point1.getY()) / (point2.getX() - point1.getX());
     }
 
     /**
@@ -68,10 +73,10 @@ public class Line2D {
     public boolean equals(Object object) {
         if (object != null && object instanceof Line2D) {
             Line2D obj = (Line2D) object;
-            return (x1 == obj.getX1() &&
-                    y1 == obj.getY1() &&
-                    x2 == obj.getX2() &&
-                    y2 == obj.getY2()); 
+            return (getX1() == obj.getX1() &&
+                    getY1() == obj.getY1() &&
+                    getX2() == obj.getX2() &&
+                    getY2() == obj.getY2()); 
         }
         return false;
     }
