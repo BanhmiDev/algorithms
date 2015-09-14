@@ -3,11 +3,13 @@ algorithms
 
 ## Java
 - Binary search tree
+- Adjacency matrix
 - Maths
     - Binomial distribution
     - Vector
     - Polynomial
     - Line2D
+    - Point2D
     - Factorial
     - Custom maths library
 - Sorting
