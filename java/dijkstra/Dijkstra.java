@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,11 +45,39 @@ public class Dijkstra {
         for (Node node = target; node != null; node = node.getPrevious()) {
             path.add(node);
         }
+        Collections.reverse(path);
         return path;
+    }
+
+    public static void printResult(Node start, ArrayList<Node> nodes) {
+        System.out.println("Starting node: " + start);
+
+        for (Node n : nodes) {
+            if (n.getDistance() == Double.POSITIVE_INFINITY) {
+                // Not connected to starting node
+                System.out.println("\nNode " + n + " not connected to " + start);
+            } else {
+                // Header
+                System.out.println("\nTo node " + n + "\n---");
+
+                // Print out shortest path
+                System.out.println("Shortest path:");
+                List<Node> path = getShortestPathTo(n);
+                for (int i = 0; i < path.size(); i++) {
+                    if (i == path.size()-1) { // End of path reached
+                        System.out.println(path.get(i) + ";\n");
+                    } else {
+                        System.out.print(path.get(i) + " -> ");
+                    }
+                }
+
+                // Print out distance
+                System.out.println("Distance: " + n.getDistance());
+            }
+        }
     }
     
     public static void main(String[] args) {
-        // TODO: Print method (?)
         Node node1 = new Node("A"); // Starting node in this case
         Node node2 = new Node("B");
         Node node3 = new Node("C");
@@ -65,29 +94,10 @@ public class Dijkstra {
         nodes.add(node4);
         nodes.add(node5);
         
+        // Dijkstra algorithm
         run(node1);
 
-        System.out.println("Starting node: " + node1);
-
-        for (Node n : nodes) {
-            if (n.getDistance() == Double.POSITIVE_INFINITY) {
-                // Not connected to starting node
-                System.out.println("\nNode " + n + " not connected to " + node1);
-            } else {
-                // Header
-                System.out.println("\nTo node " + n + "\n---");
-
-                // Print out shortest path
-                System.out.println("Shortest path:");
-                List<Node> path = getShortestPathTo(n);
-                for (int i = 0; i < path.size()-1; i++) {
-                    System.out.print(path.get(i) + " -> ");
-                }
-                System.out.print(node1 + "\n");
-
-                // Print out distance
-                System.out.println("Distance: " + n.getDistance());
-            }
-        }
+        // Print out result after algorithm execution
+        printResult(node1, nodes);
     }
 }
