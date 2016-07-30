@@ -1,41 +1,23 @@
-/**
- * Bubble Sort
- * Time complexity: O(n^2)
- * Space complexity: O(1)
- */
-import java.util.Arrays;
-
 class BubbleSort {
-    private static int[] sort(int[] array) {
-        int n = array.length;
-        boolean swapped = true;
+
+    public static <E extends Comparable> void sort(E[] array) {
+        int upper = array.length-1;
+        boolean swapped;
         
-        while (swapped) {
+        do {
             swapped = false;
-            for (int i = 1; i < n; i++) {
-                if (array[i-1] > array[i]) {
-                    int temp_value = array[i-1];
-                    array[i-1] = array[i];
-                    array[i] = temp_value;
+            for (int i = 0; i < upper; i++) {
+                if (array[i].compareTo(array[i+1]) > 0) {
+                    Swap.index(array, i, i+1);
                     swapped = true;
                 }
             }
-            n--;
-        }
-
-        return array;
-    }
-
-    public static void main(String[] args) {
-        int[] array = {5, 3, -1, 13, 6, 2, 8};
-        // Convert array to string to print out
-        System.out.println(Arrays.toString(sort(array)));
+            upper--;
+        } while (swapped);
     }
 }
 
 /* Alternative version without while loop
-import java.util.Arrays;
-
 class BubbleSort {
     private static int[] sort(int[] array) {
         int temp_value;
@@ -55,12 +37,6 @@ class BubbleSort {
         }
 
         return array;
-    }
-
-    public static void main(String[] args) {
-        int[] array = {5, 3, -1, 13, 6, 2, 8};
-        // Convert array to string to print out
-        System.out.println(Arrays.toString(sort(array)));
     }
 }
 */
